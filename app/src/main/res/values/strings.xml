@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EspressoDemo</string>
+    <string name="go_to_2_page">Go To 2 Page</string>
+    <string name="second_activity">Good Bye</string>
+    <string name="back">Back</string>
+    <string name="hey_welcome">Hey! Welcome....</string>
+</resources>
