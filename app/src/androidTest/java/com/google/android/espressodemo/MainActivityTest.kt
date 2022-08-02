@@ -1,19 +1,23 @@
 package com.google.android.espressodemo
 
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4ClassRunner::class)
 class MainActivityTest {
     // main activity will launch before class and closes after all testcases got executed
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
+
 
 
     @Test
@@ -30,6 +34,7 @@ class MainActivityTest {
     fun textValidation() {
         onView(withId(R.id.welcomeActivity)).check(matches(withText(R.string.hey_welcome)))
     }
+
 
     @Test
     fun navigate2NextPage() {
@@ -48,11 +53,18 @@ class MainActivityTest {
         onView(withId(R.id.tvSecondActivity))
             .check(matches(isDisplayed()))
 
-        Espresso.pressBack()
+            pressBack()
 
         // after clicking on back button main activity should be visible
         onView(withId(R.id.welcomeActivity))
             .check(matches(isDisplayed()))
 
+    }
+
+    @Test
+    fun childEleCount()
+    {
+        onView(withId(R.id.parent_id))
+            .check(matches(hasChildCount(2)))
     }
 }
