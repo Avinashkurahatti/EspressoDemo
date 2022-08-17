@@ -7,6 +7,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,6 +23,7 @@ class MainActivityTest {
 
     @Test
     fun checkTextVisibility() {
+        WaitSteps().waitForElement(R.id.btnSecondActivity)
         onView(withId(R.id.welcomeActivity))
             .check(matches(isDisplayed()))
 
@@ -66,5 +68,13 @@ class MainActivityTest {
     {
         onView(withId(R.id.parent_id))
             .check(matches(hasChildCount(2)))
+    }
+
+    @Test
+    fun textAssertion()
+    {
+        val exp = "Hey! Welcome...."
+        val actual = WaitSteps().getText(onView(withId(R.id.welcomeActivity)))
+        assertEquals("$exp is not equals to $actual",exp,actual)
     }
 }

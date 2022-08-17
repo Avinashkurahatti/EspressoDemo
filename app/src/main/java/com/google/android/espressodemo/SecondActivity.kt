@@ -1,5 +1,6 @@
 package com.google.android.espressodemo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.espressodemo.databinding.ActivitySecondBinding
@@ -13,6 +14,12 @@ class SecondActivity : AppCompatActivity() {
 
         binding.btnSecondActivity.setOnClickListener {
             onBackPressed()
+        }
+        binding.tvSecondActivity.setOnClickListener {
+            startActivity(
+                Intent(this,
+                MyWebActivity::class.java)
+            )
         }
     }
 }

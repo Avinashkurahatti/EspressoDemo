@@ -8,8 +8,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Rule
 import org.junit.Test
 
-class SecondActivityTest
-{
+class SecondActivityTest {
     // ActivityScenarioRule launches a given activity before the test starts and closes after the test
 
     @get:Rule
@@ -18,12 +17,14 @@ class SecondActivityTest
 
     @Test
     fun checkActivity() {
+        WaitSteps().waitForElement(R.id.btnSecondActivity)
         onView(withId(R.id.tvSecondActivity)).check(matches(isDisplayed()))
     }
 
     @Test
     fun testButton() {
         onView(withId(R.id.btnSecondActivity)).check(matches(isDisplayed())) // checking its visible or not
+
         onView(withId(R.id.btnSecondActivity)).perform(click())  // perform if it is visible
     }
 
@@ -31,4 +32,5 @@ class SecondActivityTest
     fun validateText() {
         onView(withId(R.id.tvSecondActivity)).check(matches(withText("Good Bye")))
     }
+
 }
