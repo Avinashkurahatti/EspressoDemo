@@ -70,7 +70,7 @@ class MyWebActivityTest {
         Thread.sleep(5000*2)
 
         onWebView()
-//            .inWindow(selectFrameByIdOrName("account"))
+            .inWindow(selectFrameByIdOrName("account"))
             .withElement(findElement(Locator.XPATH,"//a[@class='gb_A gb_La gb_f']"))
             .perform(webClick())
 
